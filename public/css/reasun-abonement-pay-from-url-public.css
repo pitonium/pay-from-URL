@@ -1,0 +1,157 @@
+/**
+ * All of the CSS for your public-facing functionality should be included in this file.
+ */
+ .offer__title p {
+    text-transform: none;
+    font-weight: 500;
+}
+.price.old::before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 113%;
+    border: 1px solid #c90909;
+}
+.pay_from_url.mkd-content {
+    width: 100%;
+}
+
+.pay_from_url .mkd-single-product-summary {
+    width: 100%;
+    text-align: center;
+}
+.pay_from_url p.price {
+    width: fit-content;
+    margin: 0 auto;
+}
+a#go_pay {
+    -webkit-box-shadow: 1px 2px 7px rgb(70 101 253 / 56%);
+    box-shadow: 1px 2px 7px rgb(70 101 253 / 56%);
+    border-color: #4564fd;
+    background-color: #4564fd;
+    font-family: Montserrat,sans-serif;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: #4564fd;
+    border: 2px solid #4564fd;
+    outline: 0;
+    padding: 11px 53px;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: .2em;
+    line-height: 1.8em;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 156px;
+    margin: 0 auto;
+}
+.yith_wapo_group_total {
+    margin-bottom: 40px;
+}
+.pay_from_url p.price {
+    margin: 20px auto;
+}
+.dopoffers {
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	max-width: 800px;
+    margin: 0 auto;
+}
+
+.dopoffers__offer {
+width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 2px 7px rgb(70 101 253 / 56%);
+    box-shadow: 1px 2px 7px rgb(70 101 253 / 56%);
+    border-color: #4564fd;
+    font-family: Montserrat,sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid #4564fd;
+    font-weight: 700;
+    letter-spacing: .2em;
+    line-height: 1.8em;
+    /* -webkit-border-radius: 30px; */
+    /* -moz-border-radius: 30px; */
+    /* border-radius: 30px;*/
+}
+.dopoffers__offer.main {
+    border: none;
+    box-shadow: none;
+    align-items: flex-start;
+}
+.dopoffers__offer>div {
+    min-width:100px;
+}
+.dopoffers__offer>div:first-child {
+        text-align: left;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+#itogo {
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    font-family: Montserrat,sans-serif;
+    position: relative;
+    display: block;
+    font-weight: 700;
+    margin: 17px 0;
+    color: #4564fd;
+}
+input.dop-check {
+    width: 30px;
+    height: 30px;
+    /* font-size: 1em; */
+    /* border: 1px solid red; */
+    /* border-radius: 9px; */
+    /* background: #2196f3; */
+    /* color: darkgreen; */
+    display: block;
+    position: relative;
+    box-sizing: content-box;
+	margin: 20px auto;
+}
+
+span.price.old.amount {
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 1.3em;
+}
+.mkd-single-product-summary .price .current-price {
+    font-size: 1.5em;
+}
+span.price.amount {
+    font-size: 2.3em;
+    padding-top: 3px;
+    padding-left: 15px;
+}
+
+
+@media screen and (max-width: 550px) {
+	.dopoffers__offer {
+		flex-direction:column;
+		margin-right:13px;
+	}
+	span.price.amount {
+		font-size: 1.5em;
+	}
+	.dopoffers__offer>div:first-child {
+		margin: 0 auto;
+		text-align: left;
+	}.dopoffers__offer.main {
+    align-items: center;
+}
+}
