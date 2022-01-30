@@ -27,7 +27,7 @@ function Connect1C($optionsPlugin){
       trigger_error('Ошибка подключения или внутренняя ошибка сервера. Не удалось связаться с базой 1С.', E_ERROR);
       //var_dump($e);
     }
-    //echo 'Раз<br>';
+
     if (is_soap_fault($ClientOneC)){
 		trigger_error('Ошибка подключения или внутренняя ошибка сервера. Не удалось связаться с базой 1С.', E_ERROR);
 		return false;
@@ -42,15 +42,12 @@ function GetData($idc, $txt){
 		try {
 			$reto = $idc->GetOfferInfo($p);
 		} catch (SoapFault $e){
-			//echo "<span style='color:red;'>ERROR!</span> </br>";
-			//var_dump($e);
 			file_put_contents(ABSPATH."/wp-content/logsfileoplata.txt", $today . "___" ."line 42 get data return\n" . var_export($e, true), FILE_APPEND);
 		}
 	}
 	else{
 		  if($ids==NULL){
-				//	echo 'Не удалось подключиться к 1С<br>';
-				file_put_contents(ABSPATH."/wp-content/logsfileoplata.txt", $today . "___" ."\n\nОтвет от SendOfferPaymentData:\n" . var_export($ids, true), FILE_APPEND);
+			(ABSPATH."/wp-content/logsfileoplata.txt", $today . "___" ."\n\nОтвет от SendOfferPaymentData:\n" . var_export($ids, true), FILE_APPEND);
 		  }
 	  }
 	return $reto;
@@ -61,20 +58,18 @@ function PutData($idc, $txt){
 		try {
 		 $reto = $idc->SendOfferPaymentData($p);
 		} catch (SoapFault $e) {
-                      echo "<span style='color:red;'>ERROR!</span> </br>";
+        echo "<span style='color:red;'>ERROR!</span> </br>";
 				file_put_contents(ABSPATH."/wp-content/logsfileoplata.txt", $today . "___" ."\n\nОтвет от SendOfferPaymentData:\n" . var_export($ids, true), FILE_APPEND);
 		} 	
 	  }
 	  else{
 		  if($ids==NULL){
 			echo 'Не удалось подключиться к 1С<br>';
-			//var_dump($idc);
 		  }
 	  }
 	return $reto;
   }
 function recursiveRebuildResArray($res,  &$arRes, $key, $index){
-	//echo "key = " . $key . "; index = " . $index . "</br>";
 	if(is_array($res['#value']))
 	{
 		foreach($res['#value'] as $itemRes)
@@ -95,11 +90,8 @@ function recursiveRebuildResArray($res,  &$arRes, $key, $index){
 			}
 			else
 			{
-				//echo "Type: " . $itemRes['Value']['#type'] . "</br>";
 				if($itemRes['Value']['#type'] == 'jv8:Array'){
-				//	echo "It`s Array!</br>";
 					foreach($itemRes['Value']['#value'] as $ind=>$ittem){
-					//	echo "ind=" . $ind . "</br>";
 						recursiveRebuildResArray($ittem,  $arRes, $k, true);
 				}
 				}
@@ -128,7 +120,6 @@ if(!empty($_REQUEST['abid'])){
 			"Value": {"#type": "jxs:string","#value": "'. $num .'"}}]}';
 	$ret1c = GetData($idc, $t);
   $_SESSION["OFFER_PAY_FROM_URL"]['abid'] = $num;
-	//var_dump($ret1c);
 	$aa=$ret1c->return; 
 	$dataResult = json_decode($aa, 1);
 	$StatusResult = $dataResult->Status; //получим значение параметра Status, который был сформирован при ответе веб-сервиса 1С
@@ -266,15 +257,12 @@ else{?>
 									godata();
 								})
 								$('.dop-check').click(function(){
-									//var cur_price = $(".current-price")[0].innerText;
-								//	totalprice = +cur_price;
 										$('#total').html(calcprice());
 								});
-							//	calcprice();
 								function buildElement(tagName, props) {
-								var element = document.createElement(tagName);
-								for (var propName in props) element[propName] = props[propName];
-								return element;
+									var element = document.createElement(tagName);
+									for (var propName in props) element[propName] = props[propName];
+										return element;
 								}
 								
 								function godata(){
@@ -295,30 +283,6 @@ else{?>
 										name: 'mode',
 										value: 'gopay',
 										}))
-						/* 			form.appendChild(
-										buildElement('input', {
-										type: 'hidden',
-										name: 'offers[0][UID]',
-										value: '<?=$arRes['MainOffers']['UID'][0];?>',
-										}))
-									form.appendChild(
-										buildElement('input', {
-										type: 'hidden',
-										name: 'offers[0][name]',
-										value: '<?=$arRes['MainOffers']['Offer'][0];?>',
-										}))
-									form.appendChild(
-										buildElement('input', {
-										type: 'hidden',
-										name: 'offers[0][flag_main_offer]',
-										value: 'Y',
-										}))
-									form.appendChild(
-										buildElement('input', {
-										type: 'hidden',
-										name: 'offers[0][price]',
-										value: '<?=$arRes['MainOffers']['Price'][0];?>',
-										})) */
 									$('form.cart input:checked').each(function(index) {
 										if(index>0){
 										}
@@ -328,10 +292,8 @@ else{?>
 										var mainflag = "Y";
 									else
 										var mainflag = "N";
-										//console.log("prod_id: " + prod_id);
 										var cur_dop_price = $('.product-price-' + prod_id)[0].innerText;
 										var cur_dop_name = $('.product-name-' + prod_id)[0].innerText;
-									//	console.log(index, prod_id,cur_dop_name,  cur_dop_price);				
 										form.appendChild(
 											buildElement('input', {
 											type: 'hidden',
@@ -356,7 +318,6 @@ else{?>
 											name: 'offers[' + (index+1) + '][price]',
 											value: cur_dop_price,
 											}))
-										// Output: input_1, input_3
 									});
 									form.style.display = 'none';
 									document.body.appendChild(form);
